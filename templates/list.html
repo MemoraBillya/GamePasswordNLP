@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Akun</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #45a049;
+            --background-color: #f0f2f5;
+            --text-color: #333;
+            --success-color: #4CAF50;
+            --info-color: #2196F3;
+            --input-background: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--success-color);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .success-message {
+            color: var(--success-color);
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .info-message {
+            color: var(--info-color);
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            text-align: left;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .go-back {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .go-back:hover {
+            background-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daftar Akun</h1>
+        <p class="success-message">Selamat! Akun Anda telah berhasil dibuat.</p>
+
+        <p class="info-message">Berikut adalah daftar dan jumlah akun yang telah terbuat:</p>
+
+        <ul>
+            {% for user in users %}
+            <li>{{ user.username }} - Dibuat pada {{ user.created_at }}</li>
+            {% endfor %}
+        </ul>
+
+        <p>Total akun yang telah dibuat: <strong>{{ total_accounts }}</strong></p>
+
+        <a class="go-back" href="{{ url_for('index') }}">Kembali ke Halaman Pendaftaran</a>
+    </div>
+</body>
+</html>
